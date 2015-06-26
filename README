@@ -1,0 +1,7 @@
+
+See the file COPYING for copying restrictions.
+
+This package contains the NSS NIS plugin for glibc.
+
+This code was formerly part of glibc, but is now standalone to
+be able to link against TI-RPC for IPv6 support.
