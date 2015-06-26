@@ -1,4 +1,4 @@
-NSS_NIS6_PRIVATE_2.0 {
+NSS_NIS_PRIVATE_2.0 {
   global:
     _nss_nis_endaliasent; _nss_nis_endetherent; _nss_nis_endgrent;
     _nss_nis_endhostent; _nss_nis_endnetent; _nss_nis_endnetgrent;

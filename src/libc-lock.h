@@ -17,6 +17,12 @@
 
 /* Call handler iff the first call.  */
 #define __libc_once(ONCE_CONTROL, INIT_FUNCTION) \
-  pthread_once(&(ONCE_CONTROL), INIT_FUNCTION)
+  do {                                           \
+    if ((ONCE_CONTROL) == 0) {                   \
+      INIT_FUNCTION ();                          \
+      (ONCE_CONTROL) = 1;                        \
+    }                                            \
+  } while (0)
+
 
 #endif	/* bits/libc-lock.h */

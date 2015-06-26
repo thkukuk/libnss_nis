@@ -58,14 +58,14 @@ main (void)
   /* Get NIS passwd entry... */
   do {
     errno = 0;
-    status = (*nss_getpwnam_r)("nobody", &pw, pwdbuffer,
+    status = (*nss_getpwnam_r)("kukuk", &pw, pwdbuffer,
 			       pwdbuflen, &errno);
   } while (status == NSS_STATUS_TRYAGAIN && errno == ERANGE);
 
   if (status != NSS_STATUS_SUCCESS)
     {
       dlclose (nss_handle);
-      fprintf (stderr, "nss_getpwnam_r(\"nobody\") failed! (%i)\n",
+      fprintf (stderr, "nss_getpwnam_r(\"kukuk\") failed! (%i)\n",
 	       status);
       return 1;
     }

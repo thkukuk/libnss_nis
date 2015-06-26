@@ -1,0 +1,8 @@
+2015-06-26  Thorsten Kukuk  <kukuk@thkukuk.de>
+
+	* configure.ac: make pkgconfig optional.
+	* src/libnss_nis.map: Fix library name.
+	* libc-lock.h (__libc_once): Fix define to make pthread_once
+	optional.
+
+	* Initial import from glibc
