@@ -11,7 +11,7 @@ CLEANFILES = *~
 EXTRA_DIST = libnss_nis.map files-parse.c databases.def
 
 AM_CFLAGS = -D_REENTRANT=1
-AM_CPPFLAGS = -I$(srcdir) -I$(top_srcdir)/lib @LIBNSL_CFLAGS@
+AM_CPPFLAGS = -I$(srcdir) @LIBNSL_CFLAGS@
 
 lib_LTLIBRARIES = libnss_nis.la
 

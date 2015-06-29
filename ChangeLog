@@ -1,3 +1,7 @@
+2015-06-29  Thorsten Kukuk  <kukuk@thkukuk.de>
+
+	* src/Makefile.am: Remove -I for not existing directories
+
 2015-06-26  Thorsten Kukuk  <kukuk@thkukuk.de>
 
 	* configure.ac: make pkgconfig optional.
