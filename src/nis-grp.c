@@ -21,6 +21,7 @@
 #include <grp.h>
 #include <nss.h>
 #include <string.h>
+#include <stdio.h>
 #include <stdbool.h>
 #include <rpc/types.h>
 #include <rpcsvc/ypclnt.h>

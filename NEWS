@@ -1,4 +1,7 @@
 libnss_nis NEWS -- history of user-visible changes.
 
+Version 1.1
+* Changes to make it more glibc independent
+
 Version 1.0
 * Initial release

@@ -18,15 +18,49 @@
 #ifndef _NSS_NIS6_H
 #define _NSS_NIS6_H	1
 
+#include <nss.h>
+#include <sys/types.h>
 #include <rpcsvc/ypclnt.h>
-
-#include "nsswitch.h"
 
 #define NSS_FLAG_NETID_AUTHORITATIVE    1
 #define NSS_FLAG_SERVICES_AUTHORITATIVE 2
 #define NSS_FLAG_SETENT_BATCH_READ      4
 #define NSS_FLAG_ADJUNCT_AS_SHADOW      8
 
+/* lookup_actions, service_library and service_user are
+   from glibc nsswitch.h header file. */
+
+/* Actions performed after lookup finished.  */
+typedef enum
+{
+  NSS_ACTION_CONTINUE,
+  NSS_ACTION_RETURN
+} lookup_actions;
+
+
+typedef struct service_library
+{
+  /* Name of service (`files', `dns', `nis', ...).  */
+  const char *name;
+  /* Pointer to the loaded shared library.  */
+  void *lib_handle;
+  /* And the link to the next entry.  */
+  struct service_library *next;
+} service_library;
+
+typedef struct service_user
+{
+  /* And the link to the next entry.  */
+  struct service_user *next;
+  /* Action according to result.  */
+  lookup_actions actions[5];
+  /* Link to the underlying library object.  */
+  service_library *library;
+  /* Collection of known functions.  */
+  void *known;
+  /* Name of the service (`files', `dns', `nis', ...).  */
+  char name[0];
+} service_user;
 
 /* Get current set of default flags.  */
 extern int _nsl_default_nss (void);

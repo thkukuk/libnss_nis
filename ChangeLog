@@ -1,4 +1,21 @@
+2016-02-16  Thorsten Kukuk  <kukuk@thkukuk.de>
+
+	* release version 1.1
+
+	* src/Makefile.am: Remove databases.def, nsswitch.h.
+	* src/databases.def: Removed.
+	* src/nsswitch.h: Removed.
+
+	* src/nis-grp.c: Include stdio.h.
+	* src/nis-rpc.c: Likewise.
+	* src/nis-pwd.c: Include stdbool.h
+	* src/nis-spwd.c: Likewise.
+
+	* src/nss-nis.h: Add missing defines from nsswitch.h.
+
 2015-06-29  Thorsten Kukuk  <kukuk@thkukuk.de>
+
+	* releae version 1.0
 
 	* src/Makefile.am: Remove -I for not existing directories
 

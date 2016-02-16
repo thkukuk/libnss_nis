@@ -23,6 +23,7 @@
 #include <nss.h>
 #include <pwd.h>
 #include <string.h>
+#include <stdbool.h>
 #include <rpcsvc/yp_prot.h>
 #include <rpcsvc/ypclnt.h>
 

@@ -20,6 +20,7 @@
 #include <ctype.h>
 #include <errno.h>
 #include <string.h>
+#include <stdbool.h>
 /* The following is an ugly trick to avoid a prototype declaration for
    _nss_nis_endspent.  */
 #define _nss_nis_endspent _nss_nis_endspent_XXX
