@@ -32,5 +32,10 @@ config.status
 libnss_nis-*.tar.bz2
 libnss_nis-*.tar.gz
 libtool
-src/nss_loader-test
 
+# for make check
+src/nss_loader-test
+src/nss_loader-test.log
+src/nss_loader-test.trs
+src/test-suite.log
+test-driver

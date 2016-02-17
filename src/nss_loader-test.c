@@ -1,4 +1,4 @@
-/* Copyright (C) 2014 Thorsten Kukuk
+/* Copyright (C) 2014, 2016 Thorsten Kukuk
    Author: Thorsten Kukuk <kukuk@suse.de>
 
    This program is free software; you can redistribute it and/or modify
@@ -55,6 +55,7 @@ main (void)
       return 1;
     }
 
+#if 0
   /* Get NIS passwd entry... */
   do {
     errno = 0;
@@ -69,6 +70,9 @@ main (void)
 	       status);
       return 1;
     }
+#endif
+
+  dlclose (nss_handle);
 
   return 0;
 }

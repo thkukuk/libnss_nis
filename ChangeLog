@@ -1,3 +1,9 @@
+2016-02-17  Thorsten Kukuk  <kukuk@thkukuk.de>
+
+	* src/Makefile.am: Add nss_loader-test as test.
+
+	* src/nss_loader-test.c (main): Only load module, don't call functions.
+
 2016-02-16  Thorsten Kukuk  <kukuk@thkukuk.de>
 
 	* release version 1.1
