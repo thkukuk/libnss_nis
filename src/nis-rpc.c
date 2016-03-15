@@ -22,6 +22,7 @@
 #include <errno.h>
 #include <stdio.h>
 #include <string.h>
+#include <rpc/netdb.h>
 #include <rpcsvc/ypclnt.h>
 
 #include "libc-lock.h"

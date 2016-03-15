@@ -1,3 +1,9 @@
+2016-03-15  Thorsten Kukuk  <kukuk@thkukuk.de>
+
+	* src/nis-rpc.c: Include rpc/netdb.h for struct rpcent
+	* configure.ac: Check for libtirpc header files
+	* src/Makefile.am: Add TIRPC_CFLAGS to CFLAGS
+
 2016-02-17  Thorsten Kukuk  <kukuk@thkukuk.de>
 
 	* release version 1.1.1

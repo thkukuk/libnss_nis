@@ -25,6 +25,7 @@ AC_PROG_LIBTOOL
 LT_INIT
 
 dnl Checks for libraries.
+PKG_CHECK_MODULES([TIRPC], [libtirpc], [], [TIRPC_LIBS=""])
 PKG_CHECK_MODULES([LIBNSL], [libnsl], [], [AC_CHECK_LIB([nsl],[yp_match],[LIBNSL_LIBS="-lnsl"],[LIBNSL_LIBS=""])])
 
 AC_OUTPUT([Makefile src/Makefile])
