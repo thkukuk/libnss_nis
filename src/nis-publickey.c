@@ -16,6 +16,10 @@
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 #include <nss.h>
 #include <ctype.h>
 #include <errno.h>
@@ -76,6 +80,7 @@ _nss_nis_getpublickey (const char *netname, char *pkey, int *errnop)
   return NSS_STATUS_SUCCESS;
 }
 
+#ifdef HAVE_XDECRYPT
 enum nss_status
 _nss_nis_getsecretkey (const char *netname, char *skey, char *passwd,
 		       int *errnop)
@@ -132,6 +137,7 @@ _nss_nis_getsecretkey (const char *netname, char *skey, char *passwd,
     }
   return NSS_STATUS_SUCCESS;
 }
+#endif
 
 /* Parse uid and group information from the passed string.
    The format of the string passed is uid:gid,grp,grp, ...  */
