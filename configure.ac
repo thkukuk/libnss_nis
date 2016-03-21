@@ -26,6 +26,17 @@ LT_INIT
 
 dnl Checks for libraries.
 PKG_CHECK_MODULES([TIRPC], [libtirpc], [], [TIRPC_LIBS=""])
+old_CFLAGS=$CFLAGS
+old_LIBS=$LIBS
+old_CPPFLAGS=$CPPFLAGS
+CFLAGS="$CFLAGS $TIRPC_CFLAGS"
+LIBS="$LIBS $TIRPC_LIBS"
+CPPFLAGS="$CPPFLAGS $TIRPC_CFLAGS"
+AC_CHECK_HEADERS([rpc/netdb.h rpc/rpcent.h])
+CFLAGS=$old_CFLAGS
+LIBS=$old_LIBS
+CPPFLAGS=$old_CPPFLAGS
+
 PKG_CHECK_MODULES([LIBNSL], [libnsl], [], [AC_CHECK_LIB([nsl],[yp_match],[LIBNSL_LIBS="-lnsl"],[LIBNSL_LIBS=""])])
 
 AC_OUTPUT([Makefile src/Makefile])

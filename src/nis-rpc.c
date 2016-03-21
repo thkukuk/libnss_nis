@@ -16,13 +16,21 @@
    License along with the GNU C Library; if not, see
    <http://www.gnu.org/licenses/>.  */
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 #include <nss.h>
 #include <netdb.h>
 #include <ctype.h>
 #include <errno.h>
 #include <stdio.h>
 #include <string.h>
+#if defined(HAVE_RPC_NETDB_H)
 #include <rpc/netdb.h>
+#elif defined(HAVE_RPC_RPCENT_H)
+#include <rpc/rpcent.h>
+#endif
 #include <rpcsvc/ypclnt.h>
 
 #include "libc-lock.h"

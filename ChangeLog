@@ -1,3 +1,8 @@
+2016-03-21  Thorsten Kukuk  <kukuk@thkukuk.de>
+
+	* configure.ac: check for rpc/netdb.h and rpc/rpcent.h
+	* src/nis-rpc.c: include rpc/netdb.h or rpc/rpcent.h if available
+
 2016-03-15  Thorsten Kukuk  <kukuk@thkukuk.de>
 
 	* src/nis-rpc.c: Include rpc/netdb.h for struct rpcent
