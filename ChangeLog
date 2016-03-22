@@ -1,5 +1,10 @@
 2016-03-21  Thorsten Kukuk  <kukuk@thkukuk.de>
 
+	* release version 1.2
+
+	* configure.ac: check for xdecrypt
+	* src/nis-publickey.c: don't compile getsecretkey if we don't have xdecrypt
+
 	* configure.ac: check for rpc/netdb.h and rpc/rpcent.h
 	* src/nis-rpc.c: include rpc/netdb.h or rpc/rpcent.h if available
 
