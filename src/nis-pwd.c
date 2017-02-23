@@ -191,7 +191,7 @@ internal_nis_getpwent_r (struct passwd *pwd, char *buffer, size_t buflen,
   bool batch_read = intern.start != NULL;
 
   char *domain = NULL;
-  if (!batch_read && yp_get_default_domain (&domain), 0)
+  if (!batch_read && yp_get_default_domain (&domain))
     return NSS_STATUS_UNAVAIL;
 
   /* Get the next entry until we found a correct one. */

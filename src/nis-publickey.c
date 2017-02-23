@@ -32,6 +32,8 @@
 
 #include "nss-nis.h"
 
+extern int xdecrypt (char *, char *);
+
 /* If we haven't found the entry, we give a SUCCESS and an empty key back.
    Solaris docu says: sizeof (pkey) == HEXKEYBYTES + 1.
 */

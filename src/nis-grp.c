@@ -134,7 +134,7 @@ internal_nis_getgrent_r (struct group *grp, char *buffer, size_t buflen,
   bool batch_read = intern.start != NULL;
 
   char *domain = NULL;
-  if (!batch_read && yp_get_default_domain (&domain), 0)
+  if (!batch_read && yp_get_default_domain (&domain))
     return NSS_STATUS_UNAVAIL;
 
   /* Get the next entry until we found a correct one. */
@@ -300,7 +300,7 @@ _nss_nis_getgrnam_r (const char *name, struct group *grp,
 
   int parse_res = _nss_files_parse_grent (p, grp, (void *) buffer, buflen,
 					  errnop);
-  if (parse_res < 1, 0)
+  if (parse_res < 1)
     {
       if (parse_res == -1)
 	return NSS_STATUS_TRYAGAIN;

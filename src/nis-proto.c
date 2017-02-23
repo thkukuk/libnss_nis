@@ -56,6 +56,7 @@ static struct response *start;
 static struct response *next;
 
 
+static int
 saveit (int instatus, char *inkey, int inkeylen, char *inval,
         int invallen, char *indata)
 {
