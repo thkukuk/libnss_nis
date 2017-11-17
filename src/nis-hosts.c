@@ -35,8 +35,7 @@
 #include "libc-lock.h"
 #include "nss-nis.h"
 
-/* Get implementation for some internal functions. */
-#include <resolv/mapv4v6addr.h>
+#include "map_v4v6_address.h"
 
 #define ENTNAME         hostent
 #define DATABASE        "hosts"
