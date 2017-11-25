@@ -15,7 +15,8 @@ AM_CPPFLAGS = -I$(srcdir) @TIRPC_CFLAGS@ @LIBNSL_CFLAGS@
 
 lib_LTLIBRARIES = libnss_nis.la
 
-noinst_HEADERS = libc-lock.h libc-symbols.h netgroup.h nss-nis.h
+noinst_HEADERS = libc-lock.h libc-symbols.h netgroup.h nss-nis.h \
+		 mapv4v6addr.h
 check_PROGRAMS = nss_loader-test
 nss_loader_test_LDADD = -ldl
 
