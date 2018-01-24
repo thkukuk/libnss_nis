@@ -30,11 +30,46 @@
 #include "libc-lock.h"
 #include "nss-nis.h"
 
-/* Get the declaration of the parser function.  */
 #define ENTNAME pwent
 #define STRUCTURE passwd
-#define EXTERN_PARSER
+struct pwent_data {};
+
 #include "files-parse.c"
+
+LINE_PARSER
+(,
+ STRING_FIELD (result->pw_name, ISCOLON, 0);
+ if (line[0] == '\0'
+     && (result->pw_name[0] == '+' || result->pw_name[0] == '-'))
+   {
+     /* This a special case.  We allow lines containing only a `+' sign
+	since this is used for nss_compat.  All other services will
+	reject this entry later.  Initialize all other fields now.  */
+     result->pw_passwd = NULL;
+     result->pw_uid = 0;
+     result->pw_gid = 0;
+     result->pw_gecos = NULL;
+     result->pw_dir = NULL;
+     result->pw_shell = NULL;
+   }
+ else
+   {
+     STRING_FIELD (result->pw_passwd, ISCOLON, 0);
+     if (result->pw_name[0] == '+' || result->pw_name[0] == '-')
+       {
+	 INT_FIELD_MAYBE_NULL (result->pw_uid, ISCOLON, 0, 10, , 0)
+	 INT_FIELD_MAYBE_NULL (result->pw_gid, ISCOLON, 0, 10, , 0)
+       }
+     else
+       {
+	 INT_FIELD (result->pw_uid, ISCOLON, 0, 10,)
+	 INT_FIELD (result->pw_gid, ISCOLON, 0, 10,)
+       }
+     STRING_FIELD (result->pw_gecos, ISCOLON, 0);
+     STRING_FIELD (result->pw_dir, ISCOLON, 0);
+     result->pw_shell = line;
+   }
+ )
 
 /* Protect global state against multiple changers */
 __libc_lock_define_initialized (static, lock)
