@@ -1,5 +1,8 @@
 libnss_nis NEWS -- history of user-visible changes.
 
+Version 3.2
+* Do not call malloc_usable_size
+
 Version 3.1
 * Remove usage of RES_USE_INET6 (glibc 2.30 adjustment)
 
