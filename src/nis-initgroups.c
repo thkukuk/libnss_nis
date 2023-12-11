@@ -256,7 +256,7 @@ _nss_nis_initgroups_dyn (const char *user, gid_t group, long int *start,
 
   struct group grpbuf, *g;
   size_t buflen = sysconf (_SC_GETPW_R_SIZE_MAX);
-  char *tmpbuf;
+  char *tmpbuf = NULL;
   enum nss_status status;
   intern_t intern = { NULL, NULL, 0 };
   gid_t *groups = *groupsp;
@@ -276,8 +276,14 @@ _nss_nis_initgroups_dyn (const char *user, gid_t group, long int *start,
 				   &intern)) == NSS_STATUS_TRYAGAIN
              && *errnop == ERANGE)
 	{
-	  tmpbuf = realloc (tmpbuf, 2 * buflen);
-	  buflen = 2 * buflen;
+    char *new_tmpbuf = realloc(tmpbuf, 2 * buflen);
+	  if (new_tmpbuf == NULL)
+      {
+          status = NSS_STATUS_TRYAGAIN;
+          goto done;
+      }
+    tmpbuf = new_tmpbuf;
+    buflen = 2 * buflen;
 	}
 
       if (status != NSS_STATUS_SUCCESS)
@@ -331,6 +337,7 @@ _nss_nis_initgroups_dyn (const char *user, gid_t group, long int *start,
     }
 
 done:
+  free(tmpbuf);
   while (intern.start != NULL)
     {
       intern.next = intern.start;
