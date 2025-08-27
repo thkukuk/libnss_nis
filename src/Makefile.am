@@ -22,8 +22,24 @@ nss_loader_test_LDADD = -ldl
 
 TESTS = $(check_PROGRAMS)
 
+# Build the version script from a template, pruning _nss_nis_getsecretkey
+# when xdecrypt() was not detected by configure (i.e., HAVE_XDECRYPT is unset).
+BUILT_SOURCES = libnss_nis.map
+EXTRA_DIST   += libnss_nis.map.in
+CLEANFILES   += libnss_nis.map
+
+libnss_nis.map: $(srcdir)/libnss_nis.map.in $(top_builddir)/config.h
+	$(AM_V_GEN) { \
+	  if grep -q '^[[:space:]]*#define[[:space:]]\+HAVE_XDECRYPT[[:space:]]\+1' $(top_builddir)/config.h ; then \
+	    cp $(srcdir)/libnss_nis.map.in $@ ; \
+	  else \
+	    sed 's/ _nss_nis_getsecretkey;//g' \
+	        $(srcdir)/libnss_nis.map.in > $@ ; \
+	  fi ; \
+	}
+
 libnss_nis_la_LDFLAGS = -version-info 2:0:0 \
-	-Wl,--version-script=$(srcdir)/libnss_nis.map
+	-Wl,--version-script=$(builddir)/libnss_nis.map
 libnss_nis_la_LIBADD = @LIBNSL_LIBS@
 libnss_nis_la_SOURCES = nis-alias.c nis-ethers.c nis-grp.c nis-hosts.c \
 			nis-initgroups.c nis-netgrp.c nis-network.c  \
