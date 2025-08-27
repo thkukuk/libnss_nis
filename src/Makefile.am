@@ -27,5 +27,5 @@ libnss_nis_la_LDFLAGS = -version-info 2:0:0 \
 libnss_nis_la_LIBADD = @LIBNSL_LIBS@
 libnss_nis_la_SOURCES = nis-alias.c nis-ethers.c nis-grp.c nis-hosts.c \
 			nis-initgroups.c nis-netgrp.c nis-network.c  \
-			nis-proto.c nis-publickey.c nis-pwd.c nis-rpc.c \
+			nis-proto.c nis-pwd.c nis-rpc.c \
 			nis-service.c nis-spwd.c nss-nis.c nss-default.c
