@@ -32,6 +32,12 @@ config.status
 libnss_nis-*.tar.bz2
 libnss_nis-*.tar.gz
 libtool
+INSTALL
+config.guess
+config.h.in
+config.sub
+ltmain.sh
+m4
 
 # for make check
 src/nss_loader-test
